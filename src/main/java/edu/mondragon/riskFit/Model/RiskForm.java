@@ -8,6 +8,10 @@ public class RiskForm {
     private int weeklyTrainingVolume;
     private double loadProgression;
 
+    public RiskForm(int i, int j, int k, int l, double m) {
+        //TODO Auto-generated constructor stub
+    }
+
     // Getters y setters
     public int getAge() {
         return age;

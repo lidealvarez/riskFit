@@ -10,7 +10,7 @@ public class RiskFormTest {
 
     @Test
     public void testGetSetAge() {
-        RiskForm riskForm = new RiskForm();
+        RiskForm riskForm = new RiskForm(25, 0, 0, 0, 0);
         
         // Comprobar el setter y getter de age
         int expectedAge = 25;
@@ -20,7 +20,7 @@ public class RiskFormTest {
 
     @Test
     public void testGetSetTrainingHoursPerWeek() {
-        RiskForm riskForm = new RiskForm();
+        RiskForm riskForm = new RiskForm(0, 5, 0, 0, 0);
         
         // Comprobar el setter y getter de trainingHoursPerWeek
         int expectedTrainingHours = 5;
@@ -30,7 +30,7 @@ public class RiskFormTest {
 
     @Test
     public void testGetSetTrainingIntensity() {
-        RiskForm riskForm = new RiskForm();
+        RiskForm riskForm = new RiskForm(0, 0, 8, 0, 0);
         
         // Comprobar el setter y getter de trainingIntensity
         int expectedIntensity = 8;
@@ -40,7 +40,7 @@ public class RiskFormTest {
 
     @Test
     public void testGetSetWeeklyTrainingVolume() {
-        RiskForm riskForm = new RiskForm();
+        RiskForm riskForm = new RiskForm(0, 0, 0, 10, 0);
         
         // Comprobar el setter y getter de weeklyTrainingVolume
         int expectedVolume = 10;
@@ -50,7 +50,7 @@ public class RiskFormTest {
 
     @Test
     public void testGetSetLoadProgression() {
-        RiskForm riskForm = new RiskForm();
+        RiskForm riskForm = new RiskForm(0, 0, 0, 0, 1.2);
         
         // Comprobar el setter y getter de loadProgression
         double expectedLoadProgression = 1.2;

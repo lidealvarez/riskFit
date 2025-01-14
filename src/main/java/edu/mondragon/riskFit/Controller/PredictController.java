@@ -24,7 +24,7 @@ public class PredictController {
 
     @GetMapping("/predict")
     public String showPredictionForm(Model model) {
-        model.addAttribute("riskForm", new RiskForm());
+        model.addAttribute("riskForm", new RiskForm(0, 0, 0, 0, 0));
         return "predict"; // Muestra el formulario
     }
 

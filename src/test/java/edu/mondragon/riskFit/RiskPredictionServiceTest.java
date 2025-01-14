@@ -32,7 +32,7 @@ public class RiskPredictionServiceTest {
     @Test
     public void testGetRiskPrediction_Success() {
         // Preparar el objeto de entrada
-        RiskForm riskForm = new RiskForm(25, 10, 7, 70, 5); // Usa datos de ejemplo
+        RiskForm riskForm = new RiskForm(25, 10, 7, 70, 5.0); // Usa datos de ejemplo
 
         // Preparar la respuesta simulada
         Map<String, Object> mockedResponse = Map.of("predicted_risk", 0.75);
@@ -53,7 +53,7 @@ public class RiskPredictionServiceTest {
     @Test
     public void testGetRiskPrediction_Failure() {
         // Preparar el objeto de entrada
-        RiskForm riskForm = new RiskForm(25, 10, 7, 70, 5);
+        RiskForm riskForm = new RiskForm(25, 10, 7, 70, 5.0);
 
         // Configurar la respuesta simulada con un error
         ResponseEntity<Map> responseEntity = new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
@@ -72,7 +72,7 @@ public class RiskPredictionServiceTest {
     @Test
     public void testGetRiskPrediction_EmptyResponse() {
         // Preparar el objeto de entrada
-        RiskForm riskForm = new RiskForm(25, 10, 7, 70, 5);
+        RiskForm riskForm = new RiskForm(25, 10, 7, 70, 5.0);
 
         // Configurar la respuesta simulada con cuerpo vacío
         Map<String, Object> mockedResponse = Map.of();
