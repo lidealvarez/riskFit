@@ -1,9 +1,10 @@
 package edu.mondragon.riskFit.Service;
 
-import edu.mondragon.riskFit.Model.RiskForm;
 import org.springframework.stereotype.Service;
 import org.springframework.http.*;
 import org.springframework.web.client.RestTemplate;
+
+import edu.mondragon.riskFit.Model.RiskForm;
 
 import java.util.Map;
 
