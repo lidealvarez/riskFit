@@ -1,12 +1,8 @@
 package edu.mondragon.riskFit.Service;
 
 import edu.mondragon.riskFit.Model.RiskForm;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
-import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpMethod;
-import org.springframework.http.ResponseEntity;
+import org.springframework.http.*;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.Map;
@@ -14,48 +10,40 @@ import java.util.Map;
 @Service
 public class RiskPredictionService {
 
-    @Value("${flask.api.url}")
-    private String flaskApiUrl;  // URL de la API Flask
+    String modelApiUrl = "http://localhost:5000/predict";
 
     private final RestTemplate restTemplate;
 
-    // Constructor para inyectar RestTemplate
     public RiskPredictionService(RestTemplate restTemplate) {
         this.restTemplate = restTemplate;
     }
 
-    /**
-     * Método para obtener la predicción de riesgo desde la API Flask.
-     *
-     * @param riskForm El formulario con las características de entrada
-     * @return La predicción obtenida desde Flask
-     */
     public Map<String, Object> getRiskPrediction(RiskForm riskForm) {
-        // Crear un Map con las características del formulario
+        // Crear el cuerpo del request con los datos del formulario
         Map<String, Object> requestBody = Map.of(
-                "age", riskForm.getAge(),
-                "trainingHoursPerWeek", riskForm.getTrainingHoursPerWeek(),
-                "trainingIntensity", riskForm.getTrainingIntensity(),
-                "weeklyTrainingVolume", riskForm.getWeeklyTrainingVolume(),
-                "loadProgression", riskForm.getLoadProgression()
-        );
+                "Age", riskForm.getAge(),
+                "Training_Hours_Per_Week", riskForm.getTrainingHoursPerWeek(),
+                "Training_Intensity", riskForm.getTrainingIntensity(),
+                "Weekly_Training_Volume", riskForm.getWeeklyTrainingVolume(),
+                "Load_Progression", riskForm.getLoadProgression());
+        System.out.println("Enviando datos al Model API: " + requestBody); // LOG DE DATOS ENVIADOS
 
-        // Crear cabeceras para la solicitud
+        // Configurar las cabeceras
         HttpHeaders headers = new HttpHeaders();
-        headers.set("Content-Type", "application/json");
+        headers.setContentType(MediaType.APPLICATION_JSON);
 
-        // Crear una entidad HTTP con las cabeceras y los datos del cuerpo
+        // Crear la solicitud HTTP
         HttpEntity<Map<String, Object>> entity = new HttpEntity<>(requestBody, headers);
 
-        // Realizar la solicitud POST a la API Flask y recibir la respuesta
+        // Hacer la solicitud POST al Model API
         ResponseEntity<Map> response = restTemplate.exchange(
-                flaskApiUrl, // URL de la API Flask
-                HttpMethod.POST, // Método POST
-                entity, // Entidad con el cuerpo de la solicitud
-                Map.class // Tipo de respuesta esperado
-        );
+                modelApiUrl,
+                HttpMethod.POST,
+                entity,
+                Map.class);
+        System.out.println("Respuesta del Model API: " + response.getBody()); // LOG DE DATOS RECIBIDOS
 
-        // Devolver el cuerpo de la respuesta (predicción)
+        // Devolver el cuerpo de la respuesta
         return response.getBody();
     }
 }

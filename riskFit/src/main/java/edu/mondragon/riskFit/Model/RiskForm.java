@@ -1,42 +1,43 @@
 package edu.mondragon.riskFit.Model;
 
 public class RiskForm {
-    private double age; // Edad
-    private double trainingHoursPerWeek; // Horas de entrenamiento por semana
-    private double trainingIntensity; // Intensidad del entrenamiento
-    private double weeklyTrainingVolume; // Volumen de entrenamiento semanal
-    private double loadProgression; // Progresión de carga
 
-    // Getters y setters para cada atributo
-    public double getAge() {
+    private int age;
+    private int trainingHoursPerWeek;
+    private int trainingIntensity;
+    private int weeklyTrainingVolume;
+    private double loadProgression;
+
+    // Getters y Setters
+    public int getAge() {
         return age;
     }
 
-    public void setAge(double age) {
+    public void setAge(int age) {
         this.age = age;
     }
 
-    public double getTrainingHoursPerWeek() {
+    public int getTrainingHoursPerWeek() {
         return trainingHoursPerWeek;
     }
 
-    public void setTrainingHoursPerWeek(double trainingHoursPerWeek) {
+    public void setTrainingHoursPerWeek(int trainingHoursPerWeek) {
         this.trainingHoursPerWeek = trainingHoursPerWeek;
     }
 
-    public double getTrainingIntensity() {
+    public int getTrainingIntensity() {
         return trainingIntensity;
     }
 
-    public void setTrainingIntensity(double trainingIntensity) {
+    public void setTrainingIntensity(int trainingIntensity) {
         this.trainingIntensity = trainingIntensity;
     }
 
-    public double getWeeklyTrainingVolume() {
+    public int getWeeklyTrainingVolume() {
         return weeklyTrainingVolume;
     }
 
-    public void setWeeklyTrainingVolume(double weeklyTrainingVolume) {
+    public void setWeeklyTrainingVolume(int weeklyTrainingVolume) {
         this.weeklyTrainingVolume = weeklyTrainingVolume;
     }
 

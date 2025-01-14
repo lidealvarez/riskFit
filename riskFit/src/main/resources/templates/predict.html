@@ -9,23 +9,23 @@
 
 <body>
     <h1>Formulario de Predicción de Riesgo de Lesión</h1>
-    <form action="/predict" method="POST" id="riskForm">
+    <form action="/predict" method="post">
         <label for="age">Edad:</label>
         <input type="number" id="age" name="age" required><br><br>
-
-        <label for="trainingHoursPerWeek">Horas de Entrenamiento por Semana:</label>
+    
+        <label for="trainingHoursPerWeek">Horas de entrenamiento por semana:</label>
         <input type="number" id="trainingHoursPerWeek" name="trainingHoursPerWeek" required><br><br>
-
-        <label for="trainingIntensity">Intensidad del Entrenamiento (1-10):</label>
-        <input type="number" id="trainingIntensity" name="trainingIntensity" min="1" max="10" required><br><br>
-
-        <label for="weeklyTrainingVolume">Volumen de Entrenamiento Semanal (en horas):</label>
+    
+        <label for="trainingIntensity">Intensidad del entrenamiento:</label>
+        <input type="number" id="trainingIntensity" name="trainingIntensity" required><br><br>
+    
+        <label for="weeklyTrainingVolume">Volumen semanal de entrenamiento:</label>
         <input type="number" id="weeklyTrainingVolume" name="weeklyTrainingVolume" required><br><br>
-
-        <label for="loadProgression">Progresión de Carga (en kg o equivalente):</label>
-        <input type="number" id="loadProgression" name="loadProgression" required><br><br>
-
-        <button type="submit">Predecir Riesgo</button>
+    
+        <label for="loadProgression">Progresión de carga:</label>
+        <input type="number" step="0.01" id="loadProgression" name="loadProgression" required><br><br>
+    
+        <button type="submit">Predecir</button>
     </form>
 </body>
 

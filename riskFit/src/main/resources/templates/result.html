@@ -1,12 +1,14 @@
 <!DOCTYPE html>
-<html lang="es">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>Resultado</title>
+    <title>Resultado de la Predicción</title>
 </head>
 <body>
     <h1>Resultado de la Predicción</h1>
-    <p>El riesgo de lesiones es: <span th:text="${risk}"></span></p>
+
+    <p>Categoría de Riesgo: <span th:text="${riskCategory}">[Categoría de Riesgo]</span></p>
+    <p>Puntaje de Riesgo: <span th:text="${riskScore}">[Puntaje de Riesgo]</span></p>
+
     <a href="/predict">Volver al formulario</a>
 </body>
 </html>
