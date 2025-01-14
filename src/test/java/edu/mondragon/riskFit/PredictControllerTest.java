@@ -77,14 +77,11 @@ public class PredictControllerTest {
 
     @Test
     public void testPredict_Error() {
-        // Arrange
         RiskForm riskForm = new RiskForm(1, 2, 3, 4, 5);
         when(riskPredictionService.getRiskPrediction(riskForm)).thenThrow(new RuntimeException("Service error"));
 
-        // Act
         String viewName = predictController.predict(riskForm, model);
 
-        // Assert
         verify(riskPredictionService).getRiskPrediction(riskForm);
         verify(model).addAttribute("error", "Ocurrió un error al procesar la predicción: Service error");
         assertEquals("error", viewName);

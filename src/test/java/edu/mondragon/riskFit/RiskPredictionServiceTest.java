@@ -1,7 +1,5 @@
 package edu.mondragon.riskFit;
 
-import edu.mondragon.riskFit.model.RiskForm;
-import edu.mondragon.riskFit.service.RiskPredictionService;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -11,6 +9,9 @@ import org.mockito.MockitoAnnotations;
 import org.mockito.Mockito;
 import org.springframework.http.*;
 import org.springframework.web.client.RestTemplate;
+
+import edu.mondragon.riskFit.model.RiskForm;
+import edu.mondragon.riskFit.service.RiskPredictionService;
 
 import static org.junit.jupiter.api.Assertions.*;
 
