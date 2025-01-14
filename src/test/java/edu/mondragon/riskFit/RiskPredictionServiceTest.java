@@ -16,7 +16,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.Map;
 
-public class RiskPredictionServiceTest {
+class RiskPredictionServiceTest {
 
     @Mock
     private RestTemplate restTemplate;
@@ -30,7 +30,7 @@ public class RiskPredictionServiceTest {
     }
 
     @Test
-    public void testGetRiskPrediction_Success() {
+    void testGetRiskPrediction_Success() {
         // Preparar el objeto de entrada
         RiskForm riskForm = new RiskForm(25, 10, 7, 70, 5.0); // Usa datos de ejemplo
 
@@ -39,7 +39,8 @@ public class RiskPredictionServiceTest {
         ResponseEntity<Map> responseEntity = new ResponseEntity<>(mockedResponse, HttpStatus.OK);
 
         // Configurar el mock de restTemplate para devolver la respuesta simulada
-        Mockito.when(restTemplate.exchange(Mockito.anyString(), Mockito.eq(HttpMethod.POST), Mockito.any(HttpEntity.class), Mockito.eq(Map.class)))
+        Mockito.when(restTemplate.exchange(Mockito.anyString(), Mockito.eq(HttpMethod.POST),
+                Mockito.any(HttpEntity.class), Mockito.eq(Map.class)))
                 .thenReturn(responseEntity);
 
         // Llamar al método
@@ -51,7 +52,7 @@ public class RiskPredictionServiceTest {
     }
 
     @Test
-    public void testGetRiskPrediction_Failure() {
+    void testGetRiskPrediction_Failure() {
         // Preparar el objeto de entrada
         RiskForm riskForm = new RiskForm(25, 10, 7, 70, 5.0);
 
@@ -59,7 +60,8 @@ public class RiskPredictionServiceTest {
         ResponseEntity<Map> responseEntity = new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
 
         // Configurar el mock de restTemplate para devolver el error
-        Mockito.when(restTemplate.exchange(Mockito.anyString(), Mockito.eq(HttpMethod.POST), Mockito.any(HttpEntity.class), Mockito.eq(Map.class)))
+        Mockito.when(restTemplate.exchange(Mockito.anyString(), Mockito.eq(HttpMethod.POST),
+                Mockito.any(HttpEntity.class), Mockito.eq(Map.class)))
                 .thenReturn(responseEntity);
 
         // Llamar al método
@@ -70,7 +72,7 @@ public class RiskPredictionServiceTest {
     }
 
     @Test
-    public void testGetRiskPrediction_EmptyResponse() {
+    void testGetRiskPrediction_EmptyResponse() {
         // Preparar el objeto de entrada
         RiskForm riskForm = new RiskForm(25, 10, 7, 70, 5.0);
 
@@ -79,7 +81,8 @@ public class RiskPredictionServiceTest {
         ResponseEntity<Map> responseEntity = new ResponseEntity<>(mockedResponse, HttpStatus.OK);
 
         // Configurar el mock de restTemplate para devolver la respuesta simulada
-        Mockito.when(restTemplate.exchange(Mockito.anyString(), Mockito.eq(HttpMethod.POST), Mockito.any(HttpEntity.class), Mockito.eq(Map.class)))
+        Mockito.when(restTemplate.exchange(Mockito.anyString(), Mockito.eq(HttpMethod.POST),
+                Mockito.any(HttpEntity.class), Mockito.eq(Map.class)))
                 .thenReturn(responseEntity);
 
         // Llamar al método

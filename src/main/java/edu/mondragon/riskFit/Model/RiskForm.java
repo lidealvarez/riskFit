@@ -10,7 +10,6 @@ public class RiskForm {
 
     public RiskForm(int age, int trainingHoursPerWeek, int trainingIntensity, int weeklyTrainingVolume,
             double loadProgression) {
-        // TODO Auto-generated constructor stub
     }
 
     // Getters y setters

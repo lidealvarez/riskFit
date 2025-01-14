@@ -30,7 +30,6 @@
 	<properties>
 		<java.version>17</java.version>
 		<sonar.host.url>https://851a-90-175-200-112.ngrok-free.app</sonar.host.url> 
-		<sonar.token>sqp_4ebfd5663e5787a7b6947d6aa350eed824dda90f</sonar.token>
 		<sonar.login>${env.SONAR_TOKEN}</sonar.login>
 
 	</properties>
