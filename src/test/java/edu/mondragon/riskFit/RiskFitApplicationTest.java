@@ -1,23 +1,30 @@
 package edu.mondragon.riskFit;
 
 import org.junit.jupiter.api.Test;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.web.server.LocalServerPort;
-import org.springframework.test.context.junit.jupiter.SpringExtension;
-import org.junit.jupiter.api.extension.ExtendWith;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.ConfigurableApplicationContext;
+import org.springframework.web.client.RestTemplate;
 
-@ExtendWith(SpringExtension.class)
-@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-public class RiskFitApplicationTest {
+import static org.junit.jupiter.api.Assertions.*;
 
-    @LocalServerPort
-    private int port;
+class RiskFitApplicationTest {
 
     @Test
-    public void contextLoads() {
-        // Si el contexto se carga correctamente, el método main será invocado
-        // automáticamente durante el inicio de la aplicación.
-        System.out.println("Aplicación iniciada en el puerto: " + port);
+    void testMainMethod() {
+        // Verifica que el método main no genere excepciones
+        try {
+            RiskFitApplication.main(new String[] { "--spring.main.web-application-type=none" });
+        } catch (Exception e) {
+            fail("El método main lanzó una excepción: " + e.getMessage());
+        }
     }
 
+    @Test
+    void testRestTemplateBean() {
+        // Verifica que el bean RestTemplate sea creado correctamente
+        RiskFitApplication application = new RiskFitApplication();
+        RestTemplate restTemplate = application.restTemplate();
+        assertNotNull(restTemplate, "El bean RestTemplate no debería ser nulo");
+    }
 }
