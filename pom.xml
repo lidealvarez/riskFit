@@ -7,12 +7,12 @@
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
 		<version>3.4.1</version>
-		<relativePath /> <!-- lookup parent from repository -->
+		<relativePath />
 	</parent>
 	<groupId>edu.mondragon</groupId>
 	<artifactId>riskFit</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>riskFit</name>
+	<name>RiskFit</name>
 	<description>Lesioen predikzioa</description>
 	<url />
 	<licenses>
@@ -31,9 +31,6 @@
 		<java.version>17</java.version>
 		<sonar.host.url>http://localhost:9000</sonar.host.url>
 		<sonar.token>sqp_d30e94c5528635538b48febd4a66635c88d22ca3</sonar.token>
-		<sonar.projectKey>com.example:RiskFit</sonar.projectKey>  <!-- Asegúrate de que este sea el
-		key correcto -->
-
 	</properties>
 	<dependencies>
 		<dependency>
@@ -77,16 +74,13 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
-
 		<dependency>
 			<groupId>org.mockito</groupId>
 			<artifactId>mockito-core</artifactId>
 			<version>4.0.0</version>
 			<scope>test</scope>
 		</dependency>
-
 	</dependencies>
-
 	<build>
 		<plugins>
 			<plugin>
@@ -106,7 +100,6 @@
 				<artifactId>sonar-maven-plugin</artifactId>
 				<version>3.7.0.1746</version>
 			</plugin>
-
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
