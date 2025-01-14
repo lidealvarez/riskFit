@@ -2,7 +2,7 @@ package edu.mondragon.riskFit;
 
 import org.junit.jupiter.api.Test;
 
-import edu.mondragon.riskFit.Model.RiskForm;
+import edu.mondragon.riskFit.model.RiskForm;
 
 import static org.junit.jupiter.api.Assertions.*;
 

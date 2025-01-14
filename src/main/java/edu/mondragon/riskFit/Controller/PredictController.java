@@ -36,7 +36,6 @@ public class PredictController {
 
             return "result";
         } catch (Exception e) {
-            System.out.println("Error al procesar la predicción: " + e.getMessage());
             model.addAttribute("error", "Ocurrió un error al procesar la predicción: " + e.getMessage());
             return "error";
         }
