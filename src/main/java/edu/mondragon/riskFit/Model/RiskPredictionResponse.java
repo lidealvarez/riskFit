@@ -5,7 +5,6 @@ public class RiskPredictionResponse {
     private String riskCategory;
     private double riskScore;
 
-    // Getters y setters
     public String getRiskCategory() {
         return riskCategory;
     }

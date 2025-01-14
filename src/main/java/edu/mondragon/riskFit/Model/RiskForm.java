@@ -12,7 +12,6 @@ public class RiskForm {
             double loadProgression) {
     }
 
-    // Getters y setters
     public int getAge() {
         return age;
     }

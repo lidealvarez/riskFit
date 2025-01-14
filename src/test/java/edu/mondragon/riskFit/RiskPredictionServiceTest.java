@@ -1,7 +1,5 @@
 package edu.mondragon.riskFit;
 
-import edu.mondragon.riskFit.Model.RiskForm;
-import edu.mondragon.riskFit.Service.RiskPredictionService;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -12,11 +10,14 @@ import org.mockito.Mockito;
 import org.springframework.http.*;
 import org.springframework.web.client.RestTemplate;
 
+import edu.mondragon.riskFit.Model.RiskForm;
+import edu.mondragon.riskFit.Service.RiskPredictionService;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.Map;
 
-class RiskPredictionServiceTest {
+public class RiskPredictionServiceTest {
 
     @Mock
     private RestTemplate restTemplate;
@@ -30,7 +31,7 @@ class RiskPredictionServiceTest {
     }
 
     @Test
-    void testGetRiskPrediction_Success() {
+    public void testGetRiskPrediction_Success() {
         // Preparar el objeto de entrada
         RiskForm riskForm = new RiskForm(25, 10, 7, 70, 5.0); // Usa datos de ejemplo
 
@@ -52,7 +53,7 @@ class RiskPredictionServiceTest {
     }
 
     @Test
-    void testGetRiskPrediction_Failure() {
+    public void testGetRiskPrediction_Failure() {
         // Preparar el objeto de entrada
         RiskForm riskForm = new RiskForm(25, 10, 7, 70, 5.0);
 
@@ -72,7 +73,7 @@ class RiskPredictionServiceTest {
     }
 
     @Test
-    void testGetRiskPrediction_EmptyResponse() {
+    public void testGetRiskPrediction_EmptyResponse() {
         // Preparar el objeto de entrada
         RiskForm riskForm = new RiskForm(25, 10, 7, 70, 5.0);
 
