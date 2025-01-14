@@ -8,7 +8,7 @@ public class RiskForm {
     private int weeklyTrainingVolume;
     private double loadProgression;
 
-    // Getters y Setters
+    // Getters y setters
     public int getAge() {
         return age;
     }
