@@ -1,11 +1,10 @@
-package edu.mondragon.riskFit.Model;
+package edu.mondragon.riskFit.model;
 
 public class RiskPredictionResponse {
 
     private String riskCategory;
     private double riskScore;
 
-    // Getters y setters
     public String getRiskCategory() {
         return riskCategory;
     }

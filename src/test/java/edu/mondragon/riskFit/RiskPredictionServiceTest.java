@@ -1,7 +1,7 @@
 package edu.mondragon.riskFit;
 
-import edu.mondragon.riskFit.Model.RiskForm;
-import edu.mondragon.riskFit.Service.RiskPredictionService;
+import edu.mondragon.riskFit.model.RiskForm;
+import edu.mondragon.riskFit.service.RiskPredictionService;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

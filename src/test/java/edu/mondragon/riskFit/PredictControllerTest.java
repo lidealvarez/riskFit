@@ -1,8 +1,9 @@
 package edu.mondragon.riskFit;
 
-import edu.mondragon.riskFit.Controller.PredictController;
-import edu.mondragon.riskFit.Model.RiskForm;
-import edu.mondragon.riskFit.Service.RiskPredictionService;
+import edu.mondragon.riskFit.controller.PredictController;
+import edu.mondragon.riskFit.model.RiskForm;
+import edu.mondragon.riskFit.service.RiskPredictionService;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
@@ -14,6 +15,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.*;
 
 class PredictControllerTest {
