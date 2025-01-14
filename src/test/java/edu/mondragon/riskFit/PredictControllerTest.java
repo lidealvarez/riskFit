@@ -1,8 +1,13 @@
 package edu.mondragon.riskFit;
 
-import edu.mondragon.riskFit.controller.PredictController;
-import edu.mondragon.riskFit.model.RiskForm;
-import edu.mondragon.riskFit.service.RiskPredictionService;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.eq;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
+
+import java.util.HashMap;
+import java.util.Map;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -11,15 +16,11 @@ import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.springframework.ui.Model;
 
-import java.util.HashMap;
-import java.util.Map;
+import edu.mondragon.riskFit.controller.PredictController;
+import edu.mondragon.riskFit.model.RiskForm;
+import edu.mondragon.riskFit.service.RiskPredictionService;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.ArgumentMatchers.eq;
-import static org.mockito.Mockito.*;
-
-class PredictControllerTest {
+public class PredictControllerTest {
 
     @InjectMocks
     private PredictController predictController;
@@ -36,7 +37,7 @@ class PredictControllerTest {
     }
 
     @Test
-    void testShowIndex() {
+    public void testShowIndex() {
         // Act
         String viewName = predictController.showIndex();
 
@@ -45,7 +46,7 @@ class PredictControllerTest {
     }
 
     @Test
-    void testShowPredictionForm() {
+    public void testShowPredictionForm() {
         // Act
         String viewName = predictController.showPredictionForm(model);
 
@@ -55,7 +56,7 @@ class PredictControllerTest {
     }
 
     @Test
-    void testPredict_Success() {
+    public void testPredict_Success() {
         // Arrange
         RiskForm riskForm = new RiskForm(1, 2, 3, 4, 5);
         Map<String, Object> prediction = new HashMap<>();
@@ -75,7 +76,7 @@ class PredictControllerTest {
     }
 
     @Test
-    void testPredict_Error() {
+    public void testPredict_Error() {
         // Arrange
         RiskForm riskForm = new RiskForm(1, 2, 3, 4, 5);
         when(riskPredictionService.getRiskPrediction(riskForm)).thenThrow(new RuntimeException("Service error"));

@@ -5,10 +5,10 @@ import org.springframework.web.client.RestTemplate;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class RiskFitApplicationTest {
+public class RiskFitApplicationTest {
 
     @Test
-    void testMainMethod() {
+    public void testMainMethod() {
         // Verifica que el método main no genere excepciones
         try {
             RiskFitApplication.main(new String[] { "--spring.main.web-application-type=none" });
@@ -18,7 +18,7 @@ class RiskFitApplicationTest {
     }
 
     @Test
-    void testRestTemplateBean() {
+    public void testRestTemplateBean() {
         // Verifica que el bean RestTemplate sea creado correctamente
         RiskFitApplication application = new RiskFitApplication();
         RestTemplate restTemplate = application.restTemplate();
