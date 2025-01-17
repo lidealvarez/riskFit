@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<link rel="stylesheet" href="/css/styles.css">
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600&display=swap" rel="stylesheet"> <!-- Fuente Nunito -->
+
+<head>
+    <title>Resultado de la Predicción</title>
+</head>
+
+<body>
+    <h1>Resultado de la Predicción (Model2)</h1>
+
+    <p>Categoría de Riesgo: <span th:text="${riskCategory}">[Categoría de Riesgo]</span></p>
+    <p>Puntaje de Riesgo: <span th:text="${riskScore}">[Puntaje de Riesgo]</span></p>
+
+    <a href="/predict2">Volver al formulario</a>
+</body>
+
+</html>
