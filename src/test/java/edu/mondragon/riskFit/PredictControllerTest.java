@@ -39,26 +39,21 @@ public class PredictControllerTest {
 
     @Test
     public void testShowIndex() {
-        // Act
         String viewName = predictController.showIndex();
 
-        // Assert
         assertEquals("index", viewName);
     }
 
     @Test
     public void testShowPredictionForm() {
-        // Act
         String viewName = predictController.showPredictionForm(model);
 
-        // Assert
         verify(model).addAttribute(eq("riskForm"), any(RiskForm.class));
         assertEquals("predict", viewName);
     }
 
     @Test
     public void testPredict_Success() {
-        // Arrange
         RiskForm riskForm = new RiskForm(1, 2, 3, 4, 5);
         Map<String, Object> prediction = new HashMap<>();
         prediction.put("riskCategory", "Medium");
@@ -66,10 +61,8 @@ public class PredictControllerTest {
 
         when(riskPredictionService.getRiskPrediction(riskForm)).thenReturn(prediction);
 
-        // Act
         String viewName = predictController.predict(riskForm, model);
 
-        // Assert
         verify(riskPredictionService).getRiskPrediction(riskForm);
         verify(model).addAttribute("riskCategory", "Medium");
         verify(model).addAttribute("riskScore", 0.65);
