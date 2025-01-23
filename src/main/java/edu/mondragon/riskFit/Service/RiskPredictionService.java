@@ -45,13 +45,7 @@ public class RiskPredictionService {
 
     public Map<String, Object> getRiskPrediction(RiskFormModel2 riskFormModel2) {
         
-        System.out.println("\nSERVICE");
-        System.out.println("player_Age: " + riskFormModel2.getPlayer_Age());
-        System.out.println("player_Weight: " + riskFormModel2.getPlayer_Weight());
-        System.out.println("player_Height: " + riskFormModel2.getPlayer_Height());
-        System.out.println("previous_Injuries: " + riskFormModel2.getPrevious_Injuries());
-        System.out.println("training_Intensity: " + riskFormModel2.getTraining_Intensity());
-        System.out.println("recovery_Time: " + riskFormModel2.getRecovery_Time());
+       
         Map<String, Object> requestBody = Map.of(
                 "Player_Age", riskFormModel2.getPlayer_Age(),
                 "Player_Weight", riskFormModel2.getPlayer_Weight(),

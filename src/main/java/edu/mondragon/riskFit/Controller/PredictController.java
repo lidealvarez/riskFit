@@ -58,13 +58,6 @@ public class PredictController {
     @PostMapping("/predict2")
     public String predict2(@ModelAttribute RiskFormModel2 riskFormModel2, Model model) {
 
-        System.out.println("\nCONTROLLER");
-        System.out.println("player_Age: " + riskFormModel2.getPlayer_Age());
-        System.out.println("player_Weight: " + riskFormModel2.getPlayer_Weight());
-        System.out.println("player_Height: " + riskFormModel2.getPlayer_Height());
-        System.out.println("previous_Injuries: " + riskFormModel2.getPrevious_Injuries());
-        System.out.println("training_Intensity: " + riskFormModel2.getTraining_Intensity());
-        System.out.println("recovery_Time: " + riskFormModel2.getRecovery_Time());
         try {
 
             Map<String, Object> prediction = riskPredictionService.getRiskPrediction(riskFormModel2);

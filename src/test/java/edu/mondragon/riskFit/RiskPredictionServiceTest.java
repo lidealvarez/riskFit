@@ -11,6 +11,7 @@ import org.springframework.http.*;
 import org.springframework.web.client.RestTemplate;
 
 import edu.mondragon.riskFit.Model.RiskForm;
+import edu.mondragon.riskFit.Model.RiskFormModel2;
 import edu.mondragon.riskFit.Service.RiskPredictionService;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -88,6 +89,69 @@ public class RiskPredictionServiceTest {
 
         // Llamar al método
         Map<String, Object> response = riskPredictionService.getRiskPrediction(riskForm);
+
+        // Verificar que la respuesta está vacía
+        assertTrue(response.isEmpty());
+    }
+
+    @Test
+    public void testGetRiskPredictionWithModel2_Success() {
+        // Preparar el objeto de entrada
+        RiskFormModel2 riskFormModel2 = new RiskFormModel2(30, 78.5, 182.3, 3, 8, 5);
+
+        // Preparar la respuesta simulada
+        Map<String, Object> mockedResponse = Map.of("predicted_risk", 0.85);
+        ResponseEntity<Map> responseEntity = new ResponseEntity<>(mockedResponse, HttpStatus.OK);
+
+        // Configurar el mock de restTemplate para devolver la respuesta simulada
+        Mockito.when(restTemplate.exchange(Mockito.anyString(), Mockito.eq(HttpMethod.POST),
+                Mockito.any(HttpEntity.class), Mockito.eq(Map.class)))
+                .thenReturn(responseEntity);
+
+        // Llamar al método
+        Map<String, Object> response = riskPredictionService.getRiskPrediction(riskFormModel2);
+
+        // Verificar la respuesta
+        assertNotNull(response);
+        assertEquals(0.85, response.get("predicted_risk"));
+    }
+
+    @Test
+    public void testGetRiskPredictionWithModel2_Failure() {
+        // Preparar el objeto de entrada
+        RiskFormModel2 riskFormModel2 = new RiskFormModel2(30, 78.5, 182.3, 3, 8, 5);
+
+        // Configurar la respuesta simulada con un error
+        ResponseEntity<Map> responseEntity = new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+
+        // Configurar el mock de restTemplate para devolver el error
+        Mockito.when(restTemplate.exchange(Mockito.anyString(), Mockito.eq(HttpMethod.POST),
+                Mockito.any(HttpEntity.class), Mockito.eq(Map.class)))
+                .thenReturn(responseEntity);
+
+        // Llamar al método
+        Map<String, Object> response = riskPredictionService.getRiskPrediction(riskFormModel2);
+
+        // Verificar que la respuesta es null debido al error en la API
+        assertNull(response);
+    }
+
+    @Test
+    public void testGetRiskPredictionWithModel2_EmptyResponse() {
+        // Preparar el objeto de entrada
+        RiskFormModel2 riskFormModel2 = new RiskFormModel2(30, 78.5, 182.3, 3, 8, 5);
+
+        // Configurar la respuesta simulada con cuerpo vacío
+        Map<String, Object> mockedResponse = Map.of();
+        ResponseEntity<Map> responseEntity = new ResponseEntity<>(mockedResponse, HttpStatus.OK);
+
+        // Configurar el mock de restTemplate para devolver la respuesta simulada
+        Mockito.when(restTemplate.exchange(Mockito.anyString(), Mockito.eq(HttpMethod.POST),
+                Mockito.any(HttpEntity.class), Mockito.eq(Map.class)))
+                .thenReturn(responseEntity);
+
+        // Llamar al método
+        Map<String, Object> response = riskPredictionService.getRiskPrediction(riskFormModel2);
 
         // Verificar que la respuesta está vacía
         assertTrue(response.isEmpty());

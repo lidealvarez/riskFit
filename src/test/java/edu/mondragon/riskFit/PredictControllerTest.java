@@ -18,6 +18,7 @@ import org.springframework.ui.Model;
 
 import edu.mondragon.riskFit.Controller.PredictController;
 import edu.mondragon.riskFit.Model.RiskForm;
+import edu.mondragon.riskFit.Model.RiskFormModel2;
 import edu.mondragon.riskFit.Service.RiskPredictionService;
 
 public class PredictControllerTest {
@@ -85,5 +86,47 @@ public class PredictControllerTest {
         verify(riskPredictionService).getRiskPrediction(riskForm);
         verify(model).addAttribute("error", "Ocurrió un error al procesar la predicción: Service error");
         assertEquals("error", viewName);
+    }
+
+    @Test
+    public void testShowPredictionForm2() {
+        String viewName = predictController.showPredictionForm2(model);
+        verify(model).addAttribute(eq("riskFormModel2"), any(RiskFormModel2.class));
+        assertEquals("predict2", viewName);
+    }
+
+    @Test
+    public void testPredict2_Success() {
+        RiskFormModel2 riskFormModel2 = new RiskFormModel2(1, 2, 3, 4, 5, 6);
+        Map<String, Object> prediction = new HashMap<>();
+        prediction.put("riskCategory", "High");
+        prediction.put("riskScore", 0.85);
+
+        when(riskPredictionService.getRiskPrediction(riskFormModel2)).thenReturn(prediction);
+
+        String viewName = predictController.predict2(riskFormModel2, model);
+
+        verify(riskPredictionService).getRiskPrediction(riskFormModel2);
+        verify(model).addAttribute("riskCategory", "High");
+        verify(model).addAttribute("riskScore", 0.85);
+        assertEquals("result2", viewName);
+    }
+
+    @Test
+    public void testPredict2_Error() {
+        RiskFormModel2 riskFormModel2 = new RiskFormModel2(1, 2, 3, 4, 5, 6);
+        when(riskPredictionService.getRiskPrediction(riskFormModel2)).thenThrow(new RuntimeException("Service error"));
+
+        String viewName = predictController.predict2(riskFormModel2, model);
+
+        verify(riskPredictionService).getRiskPrediction(riskFormModel2);
+        verify(model).addAttribute("error", "Ocurrió un error al procesar la predicción: Service error");
+        assertEquals("error", viewName);
+    }
+
+    @Test
+    public void testHeartRatePage() {
+        String viewName = predictController.heartRatePage();
+        assertEquals("heartRate", viewName);
     }
 }
