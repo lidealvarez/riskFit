@@ -9,12 +9,6 @@ public class RiskFormModel2 {
 
     public RiskFormModel2(int player_Age, double player_Weight, double player_Height, int previous_Injuries,
             int training_Intensity, int recovery_Time) {
-        this.player_Age = player_Age;
-        this.player_Weight = player_Weight;
-        this.player_Height = player_Height;
-        this.previous_Injuries = previous_Injuries;
-        this.training_Intensity = training_Intensity;
-        this.recovery_Time = recovery_Time;
     }
 
     // Getters y Setters
