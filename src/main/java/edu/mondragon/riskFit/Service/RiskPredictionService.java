@@ -1,6 +1,7 @@
 package edu.mondragon.riskFit.Service;
 
 import org.springframework.stereotype.Service;
+import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.*;
 import org.springframework.web.client.RestTemplate;
 
@@ -34,18 +35,17 @@ public class RiskPredictionService {
 
         HttpEntity<Map<String, Object>> entity = new HttpEntity<>(requestBody, headers);
 
-        ResponseEntity<Map> response = restTemplate.exchange(
+        ResponseEntity<Map<String, Object>> response = restTemplate.exchange(
                 modelApiUrl,
                 HttpMethod.POST,
                 entity,
-                Map.class);
-
+                new ParameterizedTypeReference<Map<String, Object>>() {
+                });
         return response.getBody();
     }
 
     public Map<String, Object> getRiskPrediction(RiskFormModel2 riskFormModel2) {
-        
-       
+
         Map<String, Object> requestBody = Map.of(
                 "Player_Age", riskFormModel2.getPlayer_Age(),
                 "Player_Weight", riskFormModel2.getPlayer_Weight(),
@@ -59,13 +59,12 @@ public class RiskPredictionService {
 
         HttpEntity<Map<String, Object>> entity = new HttpEntity<>(requestBody, headers);
 
-        ResponseEntity<Map> response = restTemplate.exchange(
+        ResponseEntity<Map<String, Object>> response = restTemplate.exchange(
                 modelApiUrl2,
                 HttpMethod.POST,
                 entity,
-                Map.class);
-        System.out.println("Response body: " + response.getBody());
-
+                new ParameterizedTypeReference<Map<String, Object>>() {
+                });
         return response.getBody();
     }
 }
