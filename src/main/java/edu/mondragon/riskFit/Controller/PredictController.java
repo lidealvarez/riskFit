@@ -78,4 +78,10 @@ public class PredictController {
             return "error";
         }
     }
+
+    @GetMapping("/heart-rate")
+    public String heartRatePage() {
+        return "heartRate"; // El archivo HTML debe estar en src/main/resources/templates/
+    }
+
 }

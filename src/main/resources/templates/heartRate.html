@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Heart Rate Monitor</title>
+    <!-- Vincular el CSS -->
+    <link rel="stylesheet" href="/static/css/heart-rate.css">
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <h1>Heart Rate Monitor</h1>
+    <p>Aquí puedes ver los datos de frecuencia cardíaca recibidos en tiempo real.</p>
+
+    <!-- Botón para simular datos nuevos -->
+    <button class="btn" onclick="simulateHeartRate()">Simular nuevo dato</button>
+
+    <!-- Tabla para listar datos -->
+    <table>
+        <thead>
+            <tr>
+                <th>Timestamp</th>
+                <th>Heart Rate (BPM)</th>
+            </tr>
+        </thead>
+        <tbody id="heartRateTableBody">
+            <!-- Los datos se llenarán dinámicamente aquí -->
+        </tbody>
+    </table>
+
+    <!-- Contenedor del gráfico -->
+    <div id="chart-container">
+        <canvas id="heartRateChart"></canvas>
+    </div>
+
+    <!-- Vincular el JavaScript -->
+    <script src="/static/js/heart-rate.js"></script>
+</body>
+</html>
