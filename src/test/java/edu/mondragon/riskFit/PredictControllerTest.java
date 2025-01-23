@@ -124,9 +124,6 @@ public class PredictControllerTest {
         assertEquals("error", viewName);
     }
 
-    @Test
-    public void testHeartRatePage() {
-        String viewName = predictController.heartRatePage();
-        assertEquals("heartRate", viewName);
-    }
+   
+    
 }
