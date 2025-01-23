@@ -16,6 +16,9 @@ import org.springframework.web.bind.annotation.*;
 public class PredictController {
 
     private RiskPredictionService riskPredictionService;
+    private static final String RISK_CATEGORY = "riskCategory";
+    private static final String RISK_SCORE = "riskScore";
+    private static final String ERROR = "error";
 
     @Autowired
     public PredictController(RiskPredictionService riskPredictionService) {
@@ -39,13 +42,13 @@ public class PredictController {
         try {
             Map<String, Object> prediction = riskPredictionService.getRiskPrediction(riskForm);
 
-            model.addAttribute("riskCategory", prediction.get("riskCategory"));
-            model.addAttribute("riskScore", prediction.get("riskScore"));
+            model.addAttribute(RISK_CATEGORY, prediction.get(RISK_CATEGORY));
+            model.addAttribute(RISK_SCORE, prediction.get(RISK_SCORE));
 
             return "result";
         } catch (Exception e) {
-            model.addAttribute("error", "Ocurrió un error al procesar la predicción: " + e.getMessage());
-            return "error";
+            model.addAttribute(ERROR, "Ocurrió un error al procesar la predicción: " + e.getMessage());
+            return ERROR;
         }
     }
 
@@ -62,13 +65,13 @@ public class PredictController {
 
             Map<String, Object> prediction = riskPredictionService.getRiskPrediction(riskFormModel2);
 
-            model.addAttribute("riskCategory", prediction.get("riskCategory"));
-            model.addAttribute("riskScore", prediction.get("riskScore"));
+            model.addAttribute(RISK_CATEGORY, prediction.get(RISK_CATEGORY));
+            model.addAttribute(RISK_SCORE, prediction.get(RISK_SCORE));
 
             return "result2";
         } catch (Exception e) {
-            model.addAttribute("error", "Ocurrió un error al procesar la predicción: " + e.getMessage());
-            return "error";
+            model.addAttribute(ERROR, "Ocurrió un error al procesar la predicción: " + e.getMessage());
+            return ERROR;
         }
     }
 
